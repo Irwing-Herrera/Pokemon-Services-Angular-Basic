@@ -1,0 +1,28 @@
+.container-app {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.container-list-pokemons {
+    width: 100%;
+    display: flex;
+    flex-direction: row;   
+}
+
+.name-pokemon {
+    margin: 16px;
+    cursor: pointer;
+}
+
+.name-pokemon:hover {
+    font-weight: bold;
+}
