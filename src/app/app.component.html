@@ -2,6 +2,15 @@
 
   <p class="title">Pokemons</p>
 
+  <input type="text" [(ngModel)]="findPokemon" placeholder="ingresa un pokemon"/>
+  <button (click)="findoPokemon()">buscar pokemon</button>
+
+  <input type="text" [(ngModel)]="name" placeholder="ingresa un nombre"/>
+  <input type="text" [(ngModel)]="email" placeholder="ingresa un email"/>
+  <input type="text" [(ngModel)]="password" placeholder="ingresa un password"/>
+  
+  <button (click)="registerUser()">Registro Usuario</button>
+
   <div class="container-list-pokemons">
 
     <p

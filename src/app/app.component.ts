@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PokemonDetail } from './models/pokemonDetail.model';
 import { PokemonList } from './models/pokemonList.model';
 import { Pokemons } from './models/pokemons.model';
+import { RegisterUserRequest, RegisterUserResponse } from './models/registerUser.model';
 import { PokemonsService } from './services/pokemons.service';
 
 @Component({
@@ -14,6 +15,12 @@ export class AppComponent implements OnInit {
   constructor(
     private _pokemonService: PokemonsService
   ) { }
+
+  public findPokemon: string = ""
+
+  public name: string = ""
+  public email: string = ""
+  public password: string = ""
 
   public pokemons: PokemonList[] = []
   public currentPokemon: PokemonDetail = {
@@ -42,6 +49,27 @@ export class AppComponent implements OnInit {
       .subscribe((response: PokemonDetail) => {
         this.currentPokemon = response
       })
+  }
+
+  public findoPokemon(): void {
+    this._pokemonService.getPokemonByName(this.findPokemon)
+    .subscribe((reponse: PokemonDetail) => {
+      this.currentPokemon = reponse
+    })
+  }
+
+  public registerUser(): void {
+
+    let user: RegisterUserRequest = {
+      email: this.email,
+      password: this.password,
+      name: this.name
+    }
+
+    this._pokemonService.postRegisterUser(user).subscribe((response: RegisterUserResponse) => {
+      console.log("Respuesta: ",response);
+      console.log("tu token es: ",response.token);
+    })
   }
 
   ngOnInit(): void {
